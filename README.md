@@ -1,19 +1,21 @@
 # マンホールカード 共通ID台帳
 
-**Manhole Card Common ID Registry** — マンホールカード収集アプリ間で取得状況を交換する際に、共通のカードIDを参照できるようにするための、非公式の基本ID一覧です。
+**Manhole Card Common ID Registry** — マンホールカード収集アプリ間で取得状況を交換する際に、共通のカードIDを参照できるようにするための、非公式の基本ID辞書です。**台帳に掲載されていることは、そのカードが発行・配布されていることを意味しません。**
 
 **共同整備・相互運用性検証：public cardigan / blue25000**
 
-**台帳バージョン：v1.0.0（初回正式公開版）**
+**台帳バージョン：v1.1.0**
 
 > 初版は public cardigan が anythingsearch.info の管理データを基に作成し、blue25000 との照合・相互運用性検証を通じて整備しています。GKP・マンホールカード発行団体による公式登録簿や認定資料ではありません。
 
 ## 収録内容
 
-- [`data/basic_ids.csv`](data/basic_ids.csv)：UTF-8、ヘッダー `basic_id`、**1,317件**、1行1種類
-- [`data/card_reference.csv`](data/card_reference.csv)：基本ID・都道府県・カード名・発行弾・カード詳細URLの**5列照合用一覧**（1,317件）
+- [`data/basic_ids.csv`](data/basic_ids.csv)：UTF-8、ヘッダー `basic_id`、**2,287件**（従来1,317件＋現行自治体A001の先行登録970件）、1行1基本ID。発行済み・未発行を区別しないID辞書
+- [`data/card_reference.csv`](data/card_reference.csv)：基本ID・都道府県・カード名・発行弾・カード詳細URLの**既存5列カード参照情報**（1,317件、従来の内容を維持）
+- [`data/basic_id_review.csv`](data/basic_id_review.csv)：全2,287件の**6列照合用一覧**（基本ID・都道府県・カード名・発行弾・カード詳細URL・自治体名）。存在しないカード情報は空欄
 - [`docs/exchange-format-v1.md`](docs/exchange-format-v1.md)：第三者のアプリ開発者向け**共通JSON交換仕様（基本ID版）**
-- 整備元：anythingsearch.info の[マンホールカードアプリ用データAPI](https://anythingsearch.info/wp-json/mhc-app/v1/map)を基に、共同照合・相互運用性検証を実施
+- 従来1,317件の整備元：anythingsearch.info の[マンホールカードアプリ用データAPI](https://anythingsearch.info/wp-json/mhc-app/v1/map)を基に、共同照合・相互運用性検証を実施
+- 追加970件：2026年10月14日に取得した[e-Statの標準地域コード](https://www.e-stat.go.jp/municipalities/cities/areacode)と照合した現行自治体A001。東京都23特別区・政令指定都市の行政区は先行登録対象外
 - 基本IDを重複なく整理し、書式や一覧内の重複を検査（カード現物との全件照合や将来の最新性を保証するものではありません）
 
 CSV例：
@@ -27,6 +29,8 @@ basic_id
 ```
 
 ## IDの扱い
+
+**この台帳はアプリ間で基本IDを突き合わせるための辞書であり、発行済みカード一覧や取得対象の母数ではありません。** 将来の発行に備えて自治体のA001を先行登録しています。アプリ画面へのカード表示、発行・配布状況、取得可能枚数は各アプリが持つカード情報で判断してください。先行登録IDと従来IDは、`basic_ids.csv` 内では同等の基本IDです。
 
 - 基本IDの例：`13-100-A001`、`KH-001-A001`
 - 英字の大文字と数字のゼロ埋めを保持します。
