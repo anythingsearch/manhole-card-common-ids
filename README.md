@@ -17,6 +17,9 @@
 - [`data/edition_id_review.csv`](data/edition_id_review.csv)：版別IDと基本ID・言語・版区分・名称を対応付けた**7列の照合一覧 4,602件**
 - [`docs/edition-id-dictionary.md`](docs/edition-id-dictionary.md)：版別ID辞書の構造・登録範囲・交換時の注意事項
 - [`docs/exchange-format-v1.md`](docs/exchange-format-v1.md)：第三者のアプリ開発者向け**共通JSON交換仕様（基本ID版）**
+- [`docs/exchange-format-v2.md`](docs/exchange-format-v2.md)：**双方で正式合意した共通JSON交換仕様 version 2**（取得日追加。アプリ間v2相互検証は未完了）
+- [`schemas/exchange-format-v2.schema.json`](schemas/exchange-format-v2.schema.json)：version 2 JSON Schema（構造・型の検証用）
+- [`examples/`](examples/)・[`TEST_CASES.md`](TEST_CASES.md)：正常／不正サンプルと実機相互検証24項目
 - 従来1,317件の整備元：anythingsearch.info の[マンホールカードアプリ用データAPI](https://anythingsearch.info/wp-json/mhc-app/v1/map)を基に、共同照合・相互運用性検証を実施
 - 追加970件：2026年10月14日に取得した[e-Statの標準地域コード](https://www.e-stat.go.jp/municipalities/cities/areacode)と照合した現行自治体A001。東京都23特別区・政令指定都市の行政区は先行登録対象外
 - 基本IDを重複なく整理し、書式や一覧内の重複を検査（カード現物との全件照合や将来の最新性を保証するものではありません）
@@ -47,7 +50,7 @@ basic_id
 
 ## アプリ間の取得状況交換との関係
 
-共通JSON交換形式（`format: manhole-card-collection-exchange`, `version: 1`）では、利用者が取得したカードの基本IDを `cards` 配列に格納します。
+共通JSON交換形式では、取得済みカードの基本IDを `cards` 配列に格納します。**version 2**では、任意の `acquired_dates` に `YYYYMMDD`形式で実際の取得日を追加します。従来のversion 1は引き続き読み込み、新規保存はversion 2に統一する仕様です。
 
 ```json
 {"format":"manhole-card-collection-exchange","version":1,"cards":["13-100-A001"]}
@@ -59,9 +62,9 @@ basic_id
 
 版別ID辞書の公開によって、交換JSON `version: 1` の共通仕様を変更するものではありません。基本IDを交換する従来の利用方法はそのままです。版別IDを受け入れるアプリもありますが、受信時に基本IDに統合されると、保存・再出力時に版の区別が保持されない場合があります。
 
-台帳のリリース番号（例：`v1.2.0`）と交換JSONの `version: 1` は別のものです。
+台帳のリリース番号（例：`v1.2.0`）と交換JSONの形式番号（`version: 1`／`version: 2`）は別のものです。
 
-第三者アプリの実装では、[共通JSON交換仕様（基本ID版 v1）](docs/exchange-format-v1.md) を参照してください。
+新規実装では[共通JSON交換仕様 version 2](docs/exchange-format-v2.md)をご確認ください。既存ファイルの互換性は[version 1](docs/exchange-format-v1.md)を参照してください。**version 2の仕様は双方で合意済みですが、Android・iOSでのversion 2相互実機検証は未完了です。**
 
 ## 更新・訂正
 

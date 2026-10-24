@@ -1,0 +1,12 @@
+{
+  "format": "manhole-card-collection-exchange",
+  "version": 2,
+  "cards": [
+    "01-203-A001",
+    "01-203-A002"
+  ],
+  "acquired_dates": {
+    "01-203-A001": "20240510",
+    "01-203-A002": "20240515"
+  }
+}

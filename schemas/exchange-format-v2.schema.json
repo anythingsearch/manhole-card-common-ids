@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/anythingsearch/manhole-card-common-ids/blob/main/schemas/exchange-format-v2.schema.json",
+  "title": "Manhole Card Collection Exchange version 2",
+  "description": "Schema checks structure; separately validate real Gregorian dates and that acquired_dates keys belong to cards.",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "cards"
+  ],
+  "properties": {
+    "format": {
+      "const": "manhole-card-collection-exchange"
+    },
+    "version": {
+      "type": "integer",
+      "const": 2
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acquired_dates": {
+      "type": "object",
+      "propertyNames": {
+        "minLength": 1
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9]{8}$"
+      }
+    },
+    "exported_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

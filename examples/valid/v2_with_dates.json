@@ -1,0 +1,12 @@
+{
+  "format": "manhole-card-collection-exchange",
+  "version": 2,
+  "exported_at": "2026-10-24T15:00:00+09:00",
+  "cards": [
+    "13-225-A001",
+    "31-364-A001"
+  ],
+  "acquired_dates": {
+    "13-225-A001": "20240510"
+  }
+}
