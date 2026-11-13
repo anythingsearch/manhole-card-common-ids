@@ -4,17 +4,17 @@
 
 **共同整備・相互運用性検証：public cardigan / blue25000**
 
-**台帳バージョン：v1.2.0**
+**台帳バージョン：v1.3.0**
 
 > 初版は public cardigan が anythingsearch.info の管理データを基に作成し、blue25000 との照合・相互運用性検証を通じて整備しています。GKP・マンホールカード発行団体による公式登録簿や認定資料ではありません。
 
 ## 収録内容
 
-- [`data/basic_ids.csv`](data/basic_ids.csv)：UTF-8、ヘッダー `basic_id`、**2,287件**（従来1,317件＋現行自治体A001の先行登録970件）、1行1基本ID。発行済み・未発行を区別しないID辞書
-- [`data/card_reference.csv`](data/card_reference.csv)：基本ID・都道府県・カード名・発行弾・カード詳細URLの**既存5列カード参照情報**（1,317件、従来の内容を維持）
-- [`data/basic_id_review.csv`](data/basic_id_review.csv)：全2,287件の**6列照合用一覧**（基本ID・都道府県・カード名・発行弾・カード詳細URL・自治体名）。存在しないカード情報は空欄
-- [`data/edition_ids.csv`](data/edition_ids.csv)：日本語・英語通常版、東京都特別版、クメール語版を含む**版別ID辞書 4,602件**（1列CSV）
-- [`data/edition_id_review.csv`](data/edition_id_review.csv)：版別IDと基本ID・言語・版区分・名称を対応付けた**7列の照合一覧 4,602件**
+- [`data/basic_ids.csv`](data/basic_ids.csv)：UTF-8、ヘッダー `basic_id`、**2,319件**（従来1,317件＋現行自治体A001の先行登録970件＋第30弾の新規32件）、1行1基本ID。発行済み・未発行を区別しないID辞書
+- [`data/card_reference.csv`](data/card_reference.csv)：基本ID・都道府県・カード名・発行弾・カード詳細URLの**5列カード参照情報**（1,368件：従来1,317件＋第30弾の51件）
+- [`data/basic_id_review.csv`](data/basic_id_review.csv)：全2,319件の**6列照合用一覧**（基本ID・都道府県・カード名・発行弾・カード詳細URL・自治体名）。存在しないカード情報は空欄
+- [`data/edition_ids.csv`](data/edition_ids.csv)：日本語・英語通常版、東京都特別版、クメール語版を含む**版別ID辞書 4,666件**（1列CSV）
+- [`data/edition_id_review.csv`](data/edition_id_review.csv)：版別IDと基本ID・言語・版区分・名称を対応付けた**7列の照合一覧 4,666件**
 - [`docs/edition-id-dictionary.md`](docs/edition-id-dictionary.md)：版別ID辞書の構造・登録範囲・交換時の注意事項
 - [`docs/exchange-format-v1.md`](docs/exchange-format-v1.md)：第三者のアプリ開発者向け**共通JSON交換仕様（基本ID版）**
 - [`docs/exchange-format-v2.md`](docs/exchange-format-v2.md)：**双方で正式合意した共通JSON交換仕様 version 2**（取得日追加。2026年10月26日にAndroid間の取得日付き双方向交換を実機確認。iOS等の全項目検証は継続）
@@ -33,6 +33,14 @@ basic_id
 00-102-B001
 01-100-A001
 ```
+
+## 第30弾の追加（2026年11月13日）
+
+- 第30弾の配布場所一覧51件について、利用者が確認した基本IDを登録。**新規32件・既存の先行登録A001への発行弾情報補完19件**。
+- 基本IDは2,319件、版別IDは4,666件。新規32件に日本語・英語通常版IDをそれぞれ先行登録（実際の言語版発行を意味しない）。
+- カード参照表には全51件を追加し、発行弾を「第30弾」と記載。カード詳細URLは未確認のため空欄。
+- 共通JSON交換仕様version 1／version 2は変更しない。配布開始・カード現物確認や各アプリへの反映は別作業。
+- [第30弾の登録ID一覧](docs/round30-id-registration-20261113.md)を参照。
 
 ## IDの扱い
 
